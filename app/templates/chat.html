@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HugChat</title>
+</head>
+<body>
+    <h1>HugChat</h1>
+    <form method="post">
+        <input type="text" name="message" placeholder="Tapez votre message...">
+        <input type="submit" value="Envoyer">
+    </form>
+    <div id="conversation">
+        {% for message in conversation %}
+        	<p><strong>Vous :</strong> {{ message['user'] }}</p>
+		<p><strong>Bot :</strong></p>
+		{% if 'bot' in message%}
+		<p> {{ message['bot'] }} </p>
+		{% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
