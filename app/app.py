@@ -10,6 +10,7 @@ app = Flask(__name__)
 chatbot = None
 conversation = []
 
+
 def initialize_chatbot():
     global chatbot
     email = os.getenv('CHATBOT_EMAIL')
@@ -45,13 +46,20 @@ def chat():
     if request.method == 'POST':
         user_input = request.form['message']
         
+        # Vérifie si le chatbot est déjà initialisé, sinon initialise-le
+        if chatbot is None:
+            chatbot = get_chatbot.get_chatbot(chatbot)
+        
         # Obtenez la réponse du chatbot
         response = chatbot.chat(user_input)
         
         # Ajouter la conversation actuelle à la liste des conversations
-        conversation.append({'user': user_input, 'response': str(resolve.resolve(json.loads(str(response))))})
+        conversation.append({'user': user_input, 'bot': str(response)})
+        dict_response = json.loads(str(response))
+        print((dict_response))
     
     return render_template('chat.html', conversation=conversation)
+
 
 if __name__ == '__main__':
     if chatbot is None:
