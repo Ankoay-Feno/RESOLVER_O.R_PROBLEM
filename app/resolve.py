@@ -25,7 +25,7 @@ def resolve(problem_details:dict):
     # Ajouter les contraintes au modèle
     for constraint in constraints:
         expr = evaluate_expression(constraint['expression'])
-        model.add_component(constraint['name'], Constraint(expr=expr))
+        model.add_component(constrzaint['name'], Constraint(expr=expr))
 
     # Évaluer l'expression de l'objectif
     objective_expr = evaluate_expression(objective['expression'])
