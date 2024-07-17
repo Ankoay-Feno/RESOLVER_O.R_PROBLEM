@@ -1,5 +1,4 @@
 python-dotenv
-google-generativeai
 pyomo
-Flask
+flask
 hugchat
