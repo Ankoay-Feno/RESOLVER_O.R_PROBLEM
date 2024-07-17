@@ -49,8 +49,7 @@ def chat():
         response = chatbot.chat(user_input)
         
         # Ajouter la conversation actuelle à la liste des conversations
-        conversation.append({'user': user_input, 'bot': str(response)})
-        print(resolve.resolve(json.loads(str(response)))) 
+        conversation.append({'user': user_input, 'response': str(resolve.resolve(json.loads(str(response))))})
     
     return render_template('chat.html', conversation=conversation)
 
