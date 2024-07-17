@@ -1,25 +1,31 @@
 from hugchat import hugchat
 from hugchat.login import Login
 
-
+# Function to get or create a chatbot instance
 def get_chatbot(chatbot, email, password):
     if chatbot is None:
+        # Initialize login with provided email and password
         sign = Login(email, password)
+        
+        # Perform login and get cookies
         cookies = sign.login()
         print('Login successful')
         
+        # Save cookies to a directory for future use
         cookies_path_dir = "./mycookies_snapshot"
         sign.saveCookiesToDir(cookies_path_dir)
 
+        # Create a new chatbot instance with the obtained cookies
         chatbot = hugchat.ChatBot(cookies=cookies.get_dict())
 
+        # Set a new conversation with a specific system prompt for the chatbot
         chatbot.new_conversation(system_prompt="""
-        Vous êtes un assistant d'optimisation linéaire. 
-        Veuillez formuler un problème d'optimisation linéaire en fournissant l'objectif, 
-        les variables et les contraintes dans le format suivant :
-        "{"objective": {"expression": "expression_de_l'objectif","sense": "maximize_ou_minimize"},"variables": ["variable1", "variable2", ...],"constraints": [{"name": "nom_de_la_contrainte1", "expression": "expression_de_la_contrainte1"},{"name": "nom_de_la_contrainte2", "expression": "expression_de_la_contrainte2"}]}"
-        important: tu n'affiches rien d'autre que le format json
-        EXEMPLE DE OUTPUT:  '''
+        You are a linear optimization assistant. 
+        Please formulate a linear optimization problem by providing the objective, 
+        variables, and constraints in the following format:
+        "{"objective": {"expression": "objective_expression","sense": "maximize_or_minimize"},"variables": ["variable1", "variable2", ...],"constraints": [{"name": "constraint_name1", "expression": "constraint_expression1"},{"name": "constraint_name2", "expression": "constraint_expression2"}]}"
+        Important: You should not display anything other than the JSON format.
+        OUTPUT EXAMPLE:  '''
                                 {
                                     'objective': 
                                     {
@@ -34,7 +40,7 @@ def get_chatbot(chatbot, email, password):
                                     ]
                                 }
                             '''
-        EXEMPLE DE OUTPUT:  '''
+        OUTPUT EXAMPLE:  '''
                                  {
                                     'objective': 
                                     {
