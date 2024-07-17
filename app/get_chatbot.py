@@ -1,6 +1,7 @@
 from hugchat import hugchat
 from hugchat.login import Login
 
+
 def get_chatbot(chatbot, email, password):
     if chatbot is None:
         sign = Login(email, password)
