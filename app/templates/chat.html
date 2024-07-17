@@ -4,38 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HugChat</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>HugChat</h1>
-    <form id="chat-form" onsubmit="return sendMessage(event)">
-        <label class="image-label" for="image-input">Insérer une image</label>
-        <input type="file" id="image-input" accept="image/*">
-        <div id="image-preview" class="image-preview"></div>
-        <input type="text" name="message" id="message-input" placeholder="Tapez votre message..." required>
-        <button type="submit" id="send-button">
-            Envoyer
-            <div class="spinner" id="spinner">
-                <div class="dot1"></div>
-                <div class="dot2"></div>
-                <div class="dot3"></div>
-            </div>
-        </button>
+    <form method="post">
+        <input type="text" name="message" placeholder="Tapez votre message...">
+        <input type="submit" value="Envoyer">
     </form>
     <div id="conversation">
-        <!-- Boucle pour afficher les messages (à remplir côté serveur) -->
         {% for message in conversation %}
-            {% if 'user' in message %}
-                <p class="message user-message">{{ message['user'] }}</p>
-            {% endif %}
-            {% if 'bot' in message %}
-                <p class="message bot-message">{{ message['bot'] }}</p>
-            {% endif %}
+        	<p><strong>Vous :</strong> {{ message['user'] }}</p>
+		<p><strong>Bot :</strong></p>
+		{% if 'bot' in message%}
+		<p> {{ message['bot'] }} </p>
+		{% endif %}
         {% endfor %}
     </div>
-    <script src="scripts.js"></script>
 </body>
 </html>
-
