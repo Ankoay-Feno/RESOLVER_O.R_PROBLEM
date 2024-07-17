@@ -55,8 +55,8 @@ def chat():
         
         # Ajouter la conversation actuelle à la liste des conversations
         conversation.append({'user': user_input, 'bot': str(response)})
-        dict_response = json.loads(str(response))
-        print((dict_response))
+        # dict_response = json.loads(str(response))
+        # print((dict_response))
     
     return render_template('chat.html', conversation=conversation)
 
