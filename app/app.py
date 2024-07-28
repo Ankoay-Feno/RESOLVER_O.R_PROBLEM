@@ -56,10 +56,9 @@ def chat():
         
         # Get the chatbot's response to the user input
         response = chatbot.chat(user_input)
-        print("after chatbot messaging")
         
         # Add the current conversation to the conversation list
-        conversation.append({'user': user_input, 'resolved problems': resolve.resolve(json.loads(str(response)))})
+        conversation.append({'user': user_input, 'Response': resolve.resolve(json.loads(str(response)))})
 
     # Render the chat template with the conversation list
     return render_template('chat.html', conversation=conversation)

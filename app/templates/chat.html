@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HugChat</title>
-    <style src="../static/style.css"></style>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <h1>HugChat</h1>
@@ -14,13 +14,14 @@
     </form>
     <div id="conversation">
         {% for message in conversation %}
-        	<p><strong>Vous :</strong> {{ message['user'] }}</p>
-		<p><strong>Bot :</strong></p>
-		{% if 'bot' in message%}
-		<p> {{ message['bot'] }} </p>
-		{% endif %}
+                <p><strong>Vous :</strong> {{ message['user'] }}</p>
+                <p><strong>Response :</strong></p>
+                {% if 'Response' in message %}
+                <p> {{ message['Response'] }} </p>
+                {% endif %}
         {% endfor %}
     </div>
-    <Script src="../static/script.js"> </Script>
+    <script src="../static/script.js"></script>
 </body>
 </html>
+
