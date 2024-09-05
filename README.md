@@ -8,6 +8,12 @@
     $ source your_virtual_name_env/bin/activate
     $ pip install -r requirements.txt
   ```
+       
+  • With Docker:
+  ```
+    $ docker build -t ImageName:tag .
+    $ docker run -it --rm --name containerName -p 5000:5000 ImageName:tag
+
 HOW TO RUN?
 
 • Step 1:
