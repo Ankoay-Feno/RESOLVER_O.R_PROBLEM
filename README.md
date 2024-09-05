@@ -2,14 +2,14 @@
 
 ### HOW TO INSTALL?
 
-    • With Python:
+• With Python:
     ```
     $ python -m venv your_virtual_name_env
     $ source your_virtual_name_env/bin/activate
     $ pip install -r requirements.txt
     ```
        
-    • With Docker:
+• With Docker:
     ```
     $ docker build -t ImageName:tag .
     ```
