@@ -1,34 +1,57 @@
-# SOLVER OF OPERATIONAL RESEARCH
+# Solver of Operational Research
 
-### HOW TO INSTALL?
+## How to Install
 
-• With Python:
-    ```
-    $ python -m venv your_virtual_name_env
-    $ source your_virtual_name_env/bin/activate
-    $ pip install -r requirements.txt
-    ```
-       
-• With Docker:
-    ```
-    $ docker build -t ImageName:tag .
+### With Python
+
+1. Create a virtual environment:
+
+    ```sh
+    python -m venv your_virtual_name_env
+    source your_virtual_name_env/bin/activate
     ```
 
+2. Install the dependencies:
 
-### HOW TO RUN?
-
-• Step 1:
-The application needs the Hugging Face credentials (login with password).
-
-• Step 2:
-
-- Set credentials in the environment:
+    ```sh
+    pip install -r requirements.txt
     ```
-    $ export CHATBOT_EMAIL='example@gmail.com'
-    $ export CHATBOT_PASSWORD='password_hugging_face'
-    $ python run.py  
+
+### With Docker
+
+1. Build the Docker image:
+
+    ```sh
+    docker build -t ImageName:tag .
     ```
-- Or run on Docker Container 
+
+## How to Run
+
+### Step 1: Obtain Hugging Face Credentials
+
+The application requires Hugging Face credentials (email and password) for authentication.
+
+### Step 2: Configure and Launch the Application
+
+#### Option A: Run Locally
+
+1. Set the credentials as environment variables:
+
+    ```sh
+    export CHATBOT_EMAIL='example@gmail.com'
+    export CHATBOT_PASSWORD='password_hugging_face'
     ```
-    $ docker run -it --rm --name containerName -p 5000:5000 ImageName:tag
+
+2. Start the application:
+
+    ```sh
+    python run.py
+    ```
+
+#### Option B: Run in a Docker Container
+
+1. Run the Docker container:
+
+    ```sh
+    docker run -it --rm --name containerName -p 5000:5000 ImageName:tag
     ```
